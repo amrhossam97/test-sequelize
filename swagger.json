@@ -1,0 +1,273 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "version":"1.0.0",
+        "title":"List & Test API",
+        "description":"List & Test API"
+    },
+    "host":"localhost:3000",
+    "basePath":"/",
+    "tags":[
+        {
+            "name":"Books API"
+        },
+        {
+            "name":"Sales API"
+        },
+        {
+            "name":"Users API"
+        }
+    ],
+    "schemes":[
+        "http",
+        "https"
+    ],
+    "consumes":[
+        "application/json"
+    ],
+    "produces":[
+        "application/json"
+    ],
+    "paths":{
+        "/api/books/all":{
+            "get":{
+                "tags":["Books API"],
+                "description":"Return all books",
+                "produces":["application/json"],
+                "responses":{
+                    "200":{
+                        "description":"List of books",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/books"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/books/add":{
+            "post":{
+                "description":"Add new book",
+                "tags":["Books API"],
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Book object that needs to be added to the DB",
+                      "required": false,
+                      "schema": {
+                        "$ref": "#/definitions/addBook"
+                      }
+                    }
+                  ],
+                "produces":["application/json"],
+                "responses":{
+                    "201":{
+                        "description":"book added",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/books"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sales/all":{
+            "get":{
+                "tags":["Sales API"],
+                "description":"Return all sales",
+                "produces":["application/json"],
+                "responses":{
+                    "200":{
+                        "description":"List of sales",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/sales"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sales/add":{
+            "post":{
+                "description":"Add new sale",
+                "tags":["Sales API"],
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Sale object that needs to be added to the DB",
+                      "required": false,
+                      "schema": {
+                        "$ref": "#/definitions/addSale"
+                      }
+                    }
+                  ],
+                "produces":["application/json"],
+                "responses":{
+                    "201":{
+                        "description":"sale added",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/books"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/all":{
+            "get":{
+                "tags":["Users API"],
+                "description":"Return all Users",
+                "produces":["application/json"],
+                "responses":{
+                    "200":{
+                        "description":"List of Users",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/user"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/add":{
+            "post":{
+                "description":"Add new user",
+                "tags":["Users API"],
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "User object that needs to be added to the DB",
+                      "required": false,
+                      "schema": {
+                        "$ref": "#/definitions/addUser"
+                      }
+                    }
+                  ],
+                "produces":["application/json"],
+                "responses":{
+                    "201":{
+                        "description":"Users added",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/definitions/addUser"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions":{
+        "books":{
+            "type":"object",
+            "required":["id"],
+            "properties":{
+                "id":{
+                    "type":"integer"
+                },
+                "title":{
+                    "type":"string"
+                },
+                "description":{
+                    "type":"string"
+                }
+            }
+        },
+        "addBook":{
+            "type":"object",
+            "properties":{
+                "title":{
+                    "type":"string"
+                },
+                "description":{
+                    "type":"string"
+                }
+            }
+        },
+        "sales":{
+            "type":"object",
+            "required":["id"],
+            "properties":{
+                "id":{
+                    "type":"integer"
+                },
+                "name":{
+                    "type":"string"
+                },
+                "age":{
+                    "type":"integer"
+                },
+                "address":{
+                    "type":"string"
+                },
+                "salary":{
+                    "type":"integer"
+                }
+            }
+        },
+        "addSale":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "age":{
+                    "type":"integer"
+                },
+                "address":{
+                    "type":"string"
+                },
+                "salary":{
+                    "type":"integer"
+                }
+            }
+        },
+        "user":{
+            "type":"object",
+            "required":["id"],
+            "properties":{
+                "id":{
+                    "type":"integer"
+                },
+                "name":{
+                    "type":"string"
+                },
+                "age":{
+                    "type":"integer"
+                },
+                "address":{
+                    "type":"string"
+                }
+            }
+        },
+        "addUser":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "age":{
+                    "type":"integer"
+                },
+                "address":{
+                    "type":"string"
+                }
+            }
+        }
+        
+    }
+}
